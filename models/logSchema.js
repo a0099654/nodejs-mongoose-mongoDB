@@ -10,9 +10,9 @@ var logSchema = new Schema({
 });
 
 logSchema.methods.displayAll = function displayAll(cb) {
-    Log.find({}, function(err, users) {
+    Log.find({}, function(err, data) {
         if (err) throw err;
-        console.log(users);
+        return data;
     });
 }
 
