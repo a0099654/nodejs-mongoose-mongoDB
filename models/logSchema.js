@@ -2,13 +2,20 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var logSchema = new Schema({
-    tweet: {},
+    log: {},
     created_at: {
         type: Date,
         default: Date.now
     }
 });
 
-var log = mongoose.model('Tweet', logSchema);
+logSchema.methods.displayAll = function displayAll(cb) {
+    Log.find({}, function(err, users) {
+        if (err) throw err;
+        console.log(users);
+    });
+}
 
-module.exports = log;
+var Log = mongoose.model('Log', logSchema);
+
+module.exports = Log;
