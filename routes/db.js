@@ -9,9 +9,9 @@ mongoose.Promise = global.Promise;
 router.get('/', function(req, res, next) {
 
     var logData = new Log({});
-    var resp = logData.displayAll();
-    console.log(resp);
-    res.send("i am here");
+    logData.displayAll((err, logs) => {
+        res.json(logs)
+    })
     // console.log("===response====");
     // console.log(resp);
     // res.send(resp);2
