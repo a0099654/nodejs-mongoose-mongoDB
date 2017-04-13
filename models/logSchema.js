@@ -9,11 +9,8 @@ var logSchema = new Schema({
     }
 });
 
-logSchema.methods.displayAll = function displayAll(cb) {
-    Log.find({}, function(err, data) {
-        if (err) throw err;
-        return data;
-    });
+logSchema.methods.displayAll = function displayAll(project_name, cb) {
+    return project_name ? this.model('Log').find({project_name}, cb) : this.model('Log').find({}, cb);
 }
 
 var Log = mongoose.model('Log', logSchema);
